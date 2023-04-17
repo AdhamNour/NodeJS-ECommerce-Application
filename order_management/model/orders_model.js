@@ -15,8 +15,8 @@ export const createOrder =async (order)=>{
     return rows;
 }
 
-export const updateOrder =async (order)=>{
-    const {rows} = await pool.query("UPDATE orders SET customer_id=$1,product_id=$2,QUANTITY=$3 WHERE id=$4",[order.customer_id,order.product_id,order.QUANTITY,order.id]);
+export const updateOrder =async (id,order)=>{
+    const {rows} = await pool.query("UPDATE orders SET customer_id=$1,product_id=$2,QUANTITY=$3 WHERE id=$4",[order.customer_id,order.product_id,order.QUANTITY,id]);
     return rows;
 }
 

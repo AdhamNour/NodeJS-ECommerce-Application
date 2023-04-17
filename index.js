@@ -2,11 +2,15 @@ import express from 'express';
 
 import customerRoutes from './customer/routes/customer_routes.js'
 import productsCatalogRoute from './products/routes/products_routes.js'
+import ordersRoutes from './order_management/router/order_router.js'
+import cartsRoutes from './shopping_cart/router/cart_router.js'
 const app = express();
 app.use(express.json())
 
 app.use('/custmers', customerRoutes);
 app.use('/products', productsCatalogRoute);
+app.use('/orders', ordersRoutes);
+app.use('/carts', cartsRoutes);
 
 
 app.listen(3000, () => {

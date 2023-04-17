@@ -1,4 +1,4 @@
-import * as orderModel from '../model/orders_model'
+import * as orderModel from '../model/orders_model.js'
 
 export const getAllOrders = async (req,res)=>{
     const result = await orderModel.getAllOrders();
