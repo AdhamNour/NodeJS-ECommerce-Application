@@ -1,11 +1,12 @@
 import { Router } from 'express';
 import * as customerController from '../controllers/customer_controller.js'
+import * as customerChecker from '../controllers/customer_checker.js'
 
 const router = Router();
 
 router.get('/', customerController.getAllCustomers);
 router.post('/', customerController.createCustomer);
-router.get('/:id', customerController.checkCustomerById, customerController.getCustomerById);
-router.put('/:id', customerController.checkCustomerById, customerController.updateCustomerById);
-router.delete('/:id', customerController.checkCustomerById, customerController.deleteCustomerById)
+router.get('/:id', customerChecker.checkCustomerById, customerController.getCustomerById);
+router.put('/:id', customerChecker.checkCustomerById, customerController.updateCustomerById);
+router.delete('/:id', customerChecker.checkCustomerById, customerController.deleteCustomerById)
 export default router;

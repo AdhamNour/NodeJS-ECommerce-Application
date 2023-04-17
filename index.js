@@ -1,11 +1,12 @@
 import express from 'express';
 
 import customerRoutes from './customer/routes/customer_routes.js'
+import productsCatalogRoute from './products/routes/products_routes.js'
 const app = express();
 app.use(express.json())
 
-app.get('/', (req, res) => { res.json("Hi") })
 app.use('/custmers', customerRoutes);
+app.use('/products', productsCatalogRoute);
 
 
 app.listen(3000, () => {
