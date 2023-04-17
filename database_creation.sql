@@ -1,0 +1,1 @@
+create DATABASE nodejs_ecommerce;

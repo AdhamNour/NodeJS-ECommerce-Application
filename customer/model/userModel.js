@@ -13,6 +13,10 @@ export const getAllCustomers =async ()=>{
 
 export const getCustomerById =async (id)=>{
     const {rows} = await pool.query("select * from customer where id=$1",[id]);
+    if(rows.length===0)
+    {
+        return null;
+    }
     return rows[0];
 }
 
@@ -27,3 +31,4 @@ export const deleteCustomer =async (id)=>{
     const {rows} = await pool.query("delete from customer where id=$1",[id]);
     return rows[0];
 }
+
