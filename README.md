@@ -8,6 +8,7 @@ The Application supports adding,updating removing any of theses entities
 - Payments
 - Orders
 - Carts
+- Products
 
 ## Technologies Used
 - ExpressJS
