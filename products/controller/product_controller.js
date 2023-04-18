@@ -11,29 +11,25 @@ export const createProduct = async (req,res) => {
 
 export const getAllProducts = async (req,res) => {
     const products = await productModel.getAllProducts()
-    res.status(200).json({
-        msg: 'Products fetched successfully', products
-    })
+    res.status(200).json(products)
 }
 
 export const getProductById = async (req,res) => {
-    const product = await productModel.getProductById(req.params.id)
-    res.status(200).json({
-        msg: 'Product fetched successfully', product
-    })
+    res.status(200).json(res.locals.product)
 }
 
 export const updateProduct = async (req,res) => {
     const { product_name, product_price } = req.body;
     const product = await productModel.updateProduct(req.params.id, {name: product_name, price:product_price })
+    
     res.status(200).json({
-        msg: 'Product updated successfully', product
+        msg: 'Product updated successfully'
     })
 }
 
 export const deleteProduct = async (req,res) => {
     const product = await productModel.deleteProduct(req.params.id)
     res.status(200).json({
-        msg: 'Product deleted successfully', product
+        msg: 'Product deleted successfully'
     })
 }

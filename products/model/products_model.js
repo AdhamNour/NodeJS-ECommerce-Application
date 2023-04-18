@@ -1,6 +1,6 @@
 import { pool } from '../../db.js'
 export const getAllProducts = async () => {
-    const { rows } = await pool.query("select * from products")
+    const { rows } = await pool.query("select * from product")
     return rows
 }
 
@@ -17,6 +17,7 @@ export const createProduct = async (product) => {
 
 export const updateProduct = async (id, product) => {
     const { rows } = await pool.query("update product set name = $1, price = $2 where id = $3", [product.name, product.price, id])
+    console.log(rows)
     return rows[0]
 }
 
