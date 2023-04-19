@@ -1,6 +1,6 @@
 # NodeJS E-Commerce Demo REST API
 
-this is Demo form createing REST API for an E-Commerce Application
+this is Modular Application that provides  REST API for an E-Commerce 
 
 ## Features
 The Application supports adding,updating removing any of theses entities
