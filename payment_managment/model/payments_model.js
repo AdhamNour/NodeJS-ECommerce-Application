@@ -9,13 +9,24 @@ export const getPaymentById = async (id) => {
     return rows[0]
 }
 
-export const createPayments = async (payment) => {
-    const { rows } = await pool.query("insert into payments(card_number,expiration_date,cvv,customer_id) values($1,$2,$3,$4)", [payment.card_number,payment.expiration_date,payment.cvv,payment.customer_id])
-    return rows[0]
+export const createPayments = async (transaction_id, card_number, expiry_date, transactionAmount) => {
+    const { rows } = await pool.query("insert into payments(transaction_id,card_number,card_expriry_date,amount) values($1,$2,$3,$4)", [transaction_id, card_number, expiry_date, transactionAmount])
+    return true
 }
 
-export const updatePayment = async (id,payment) => {
-    const { rows } = await pool.query("update payments set card_number = $1,expiration_date = $2,cvv = $3,customer_id = $4 where id = $5", [payment.card_number,payment.expiration_date,payment.cvv,payment.customer_id,id])
+export const updatePayment = async (id,
+    transaction_id,
+    card_number,
+    expiry_date,
+    transactionAmount
+) => {
+    const { rows } = await pool.query("update payments set card_number = $3,card_expriry_date = $4,amount = $5,transaction_id = $2 where id = $1", [
+        id,
+        transaction_id,
+        card_number,
+        expiry_date,
+        transactionAmount
+    ])
     return rows[0]
 }
 
