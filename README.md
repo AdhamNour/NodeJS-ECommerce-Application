@@ -58,12 +58,15 @@ CREATE TABLE orders(
 ```sql
 CREATE TABLE payments(
     id SERIAL NOT NULL,
-    card_number character varying(255),
-    cvv character(3),
-    expiration_date character(5),
-    customer_id integer,
+    transaction_id integer NOT NULL,
+    card_number character(16) NOT NULL,
+    card_expriry_date date NOT NULL,
+    status character varying(255),
+    amount numeric NOT NULL,
+    description character varying(255),
+    created_on date NOT NULL DEFAULT now(),
     PRIMARY KEY(id),
-    CONSTRAINT payments_customer_id_fkey FOREIGN key(customer_id) REFERENCES customer(id)
+    CONSTRAINT payments_transaction_id_fkey FOREIGN key(transaction_id) REFERENCES transactions(id)
 );
 ```
 ```sql
@@ -73,6 +76,19 @@ CREATE TABLE product(
     name character varying(255),
     price integer,
     PRIMARY KEY(id)
+);
+```
+```sql
+CREATE TABLE transactions(
+    id SERIAL NOT NULL,
+    description character varying(255),
+    created_on date NOT NULL DEFAULT now(),
+    amount integer NOT NULL,
+    order_id integer NOT NULL,
+    payment_method character varying(255) NOT NULL,
+    status character varying(255),
+    PRIMARY KEY(id),
+    CONSTRAINT transactions_order_id_fkey FOREIGN key(order_id) REFERENCES orders(id)
 );
 ```
 
